@@ -8,6 +8,6 @@ class RandomSolver(BaseSolver):
     def generate_cycle(self, init_point: int) -> list[int]:
         if init_point < 0 or init_point >= self.n:
             raise IndexError
-        others = [i for i in range(self.n) if i != init_point]
-        cycle = [init_point] + random.sample(others, self.cycle_length - 1)
+        others = [i for i in range(self.n)]
+        cycle = random.sample(others, self.cycle_length)
         return cycle
