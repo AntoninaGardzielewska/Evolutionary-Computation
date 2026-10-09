@@ -1,1 +1,3 @@
 pandas
+black
+matplotlib

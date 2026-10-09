@@ -4,7 +4,8 @@ import random
 
 from src.base_solver import BaseSolver
 
-class RandomSolver(BaseSolver):
+
+class Random(BaseSolver):
     def generate_cycle(self, init_point: int) -> list[int]:
         if init_point < 0 or init_point >= self.n:
             raise IndexError

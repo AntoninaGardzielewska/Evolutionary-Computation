@@ -3,7 +3,8 @@ import random
 
 from src.base_solver import BaseSolver
 
-class NearestNeighborEndSolver(BaseSolver):
+
+class NearestNeighborEndPosition(BaseSolver):
     def generate_cycle(self, init_point: int) -> list[int]:
         cycle = [init_point]
         visited = {init_point}

@@ -21,5 +21,5 @@ class BaseSolver(ABC):
             min=min(results),
             max=max(results),
             average=sum(results) / len(results),
-            best_cycle=cycles[results.index(min(results))]
+            best_cycle=cycles[results.index(min(results))],
         )
