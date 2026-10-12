@@ -1,3 +1,4 @@
 .venv
 .idea
 Task1/results
+**/__pycache__
