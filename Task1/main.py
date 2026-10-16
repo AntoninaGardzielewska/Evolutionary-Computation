@@ -1,4 +1,5 @@
 from src.greedy_cycle import GreedyCycle
+from src.greedy_regret import Greedy2RegretAnyPosition, Greedy2RegretCycle
 from src.nearest_neighbor_any import NearestNeighborAnyPosition
 from src.nearest_neighbor_end import NearestNeighborEndPosition
 from src.random_solution import Random
@@ -6,7 +7,14 @@ from src.utils import read_file, build_distance_matrix, Point
 from src.visualization import plot_solution
 from pathlib import Path
 
-solvers = (Random, NearestNeighborEndPosition, NearestNeighborAnyPosition, GreedyCycle)
+solvers = (
+    Random,
+    NearestNeighborEndPosition,
+    NearestNeighborAnyPosition,
+    GreedyCycle,
+    Greedy2RegretAnyPosition,
+    Greedy2RegretCycle,
+)
 
 if __name__ == "__main__":
     out = Path("results")
