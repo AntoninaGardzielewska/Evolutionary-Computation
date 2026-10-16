@@ -1,4 +1,6 @@
 from dataclasses import dataclass
+from pathlib import Path
+
 import pandas as pd
 
 
@@ -17,7 +19,7 @@ class Point:
     cost: int
 
 
-def read_file(path: str) -> list[Point]:
+def read_file(path: str | Path) -> list[Point]:
     df = pd.read_csv(path, header=None, sep=";")
     points_list = [Point(*row[1:]) for row in df.itertuples()]
     return points_list
