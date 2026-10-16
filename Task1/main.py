@@ -8,7 +8,6 @@ from src.random_solution import Random
 from src.utils import build_distance_matrix, read_file
 from src.visualization import plot_solution
 
-<<<<<<< HEAD
 solvers = (
     Random,
     NearestNeighborEndPosition,
@@ -17,10 +16,8 @@ solvers = (
     Greedy2RegretAnyPosition,
     Greedy2RegretCycle,
 )
-=======
-solvers = (Random, NearestNeighborEndPosition, NearestNeighborAnyPosition, GreedyCycle)
+
 BASE_DIR = Path(__file__).resolve().parent
->>>>>>> 8af01907afa2b1d16255007373ede6eaef6b6d9d
 
 if __name__ == "__main__":
     out = Path("results")
