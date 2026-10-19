@@ -25,7 +25,7 @@ class _GreedyRegret(BaseSolver):
             unvisited.remove(second)
 
         while len(cycle) < self.cycle_length:
-            best_score, best_v, best_pos = None, None, None
+            best_key, best_v, best_pos = None, None, None
 
             for v in unvisited:
                 options = []
@@ -51,8 +51,10 @@ class _GreedyRegret(BaseSolver):
                     regret_weight, change_weight = self.weights
                     score = regret_weight * regret - change_weight * best_change
 
-                if best_score is None or score > best_score:
-                    best_score, best_v, best_pos = score, v, position
+                # higher score wins; on a tie, the smaller change wins
+                key = (score, -best_change)
+                if best_key is None or key > best_key:
+                    best_key, best_v, best_pos = key, v, position
 
             cycle.insert(best_pos, best_v)
             unvisited.remove(best_v)

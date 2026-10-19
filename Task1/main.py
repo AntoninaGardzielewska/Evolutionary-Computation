@@ -8,13 +8,25 @@ from src.random_solution import Random
 from src.utils import build_distance_matrix, read_file
 from src.visualization import plot_solution
 
+WEIGHTS = (1.0, 1.0)
+
 solvers = (
-    Random,
-    NearestNeighborEndPosition,
-    NearestNeighborAnyPosition,
-    GreedyCycle,
-    Greedy2RegretAnyPosition,
-    Greedy2RegretCycle,
+    ("Random", Random, {}),
+    ("NearestNeighborEndPosition", NearestNeighborEndPosition, {}),
+    ("NearestNeighborAnyPosition", NearestNeighborAnyPosition, {}),
+    ("GreedyCycle", GreedyCycle, {}),
+    ("Greedy2RegretAnyPosition", Greedy2RegretAnyPosition, {}),
+    ("Greedy2RegretCycle", Greedy2RegretCycle, {}),
+    (
+        "Greedy2RegretAnyPositionWeighted",
+        Greedy2RegretAnyPosition,
+        {"weights": WEIGHTS},
+    ),
+    (
+        "Greedy2RegretCycleWeighted",
+        Greedy2RegretCycle,
+        {"weights": WEIGHTS},
+    ),
 )
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -25,9 +37,8 @@ if __name__ == "__main__":
     points = read_file(BASE_DIR / "data" / "TSPA.csv")
     distances = build_distance_matrix(points)
     costs = [point.cost for point in points]
-    for solver_class in solvers:
-        method = solver_class.__name__
-        solver = solver_class(distances, costs)
+    for method, solver_class, kwargs in solvers:
+        solver = solver_class(distances, costs, **kwargs)
         result = solver.get_statistics()
         print(f"{method}: min={result.min} max={result.max} avg={result.average:.1f}")
 
@@ -35,6 +46,6 @@ if __name__ == "__main__":
             points,
             result.best_cycle,
             title=f"{method} (cost {result.min})",
-            save_path= str(out / f"{method}.png"),
+            save_path=str(out / f"{method}.png"),
             show=False,
         )
