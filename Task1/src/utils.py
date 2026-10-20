@@ -10,6 +10,9 @@ class Result:
     max: int
     average: float
     best_cycle: list[int]
+    min_time: float = 0.0
+    max_time: float = 0.0
+    average_time: float = 0.0
 
 
 @dataclass
