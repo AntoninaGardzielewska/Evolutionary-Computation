@@ -1,5 +1,5 @@
 .venv
 .idea
-Task1/results
+results
 **/__pycache__
 email/
